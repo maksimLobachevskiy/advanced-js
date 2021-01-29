@@ -51,12 +51,14 @@ const characters = [
 ];
 
 let charactersShortInfo = [];
+
 function newChar() {
-    characters.forEach(function ({name, lastName, age}) {
+    characters.forEach(({name, lastName, age}) => {
         charactersShortInfo.push({name, lastName, age});
     });
     return charactersShortInfo;
 }
+
 console.log(newChar());
 
 //TASK3////////////////////////////
@@ -64,7 +66,7 @@ const user1 = {
     name: "John",
     years: 30,
 };
-let {name, years:age, isAdmin = false} = user1;
+let {name, years: age, isAdmin = false} = user1;
 console.log(name, age, isAdmin);
 
 //TASK 4/////////////////////////////
@@ -99,8 +101,6 @@ const satoshi2018 = {
     birth: '1975-04-05'
 }
 
-
-
 const fullProfile = {...satoshi2018, ...satoshi2019, ...satoshi2020};
 console.log(fullProfile);
 
@@ -120,7 +120,7 @@ const bookToAdd = {
     name: 'Game of thrones',
     author: 'George R. R. Martin'
 }
-const books2  = new Set([...books, {name, author} = bookToAdd]);
+const books2 = new Set([...books, {name, author} = bookToAdd]);
 console.log(books2);
 
 //TASK6////////////////////////////
