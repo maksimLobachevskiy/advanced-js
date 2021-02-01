@@ -1,8 +1,16 @@
 //TASK1////////////////////////////
 const clients1 = ["Гилберт", "Сальваторе", "Пирс", "Соммерс", "Форбс", "Донован", "Беннет"];
 const clients2 = ["Пирс", "Зальцман", "Сальваторе", "Майклсон"];
-const clients3 = new Set([...clients1, ...clients2]);
-console.log(clients3);
+function uniqueArr(arr) {
+let clients3 = [];
+    for (let str of arr) {
+        if (!clients3.includes(str)) {
+            clients3.push(str);
+        }
+    }
+    return clients3;
+}
+console.log(uniqueArr([...clients2, ...clients1]));
 
 //TASK2////////////////////////////
 const characters = [
@@ -120,7 +128,7 @@ const bookToAdd = {
     name: 'Game of thrones',
     author: 'George R. R. Martin'
 }
-const books2 = new Set([...books, {name, author} = bookToAdd]);
+const books2 = [...books, {name, author} = bookToAdd];
 console.log(books2);
 
 //TASK6////////////////////////////
