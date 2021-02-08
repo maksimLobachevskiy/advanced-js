@@ -33,16 +33,16 @@ function renderBooks(arr) {
         const {author, name, price} = item;
         try {
             if (!author) {
-                throw new Error(`Error: no author in book: #${index + 1}`);
+                throw new Error(`no author in book: #${index + 1}`);
             } else if (!name) {
-                throw new Error(`Error: no name in book: #${index + 1}`);
+                throw new Error(`no name in book: #${index + 1}`);
             } else if (!price) {
-                throw new Error(`Error: no price in book: #${index + 1}`);
+                throw new Error(`no price in book: #${index + 1}`);
             } else {
                 return `<li>BOOK #${index + 1}<br><strong>Author:</strong> ${author}<br><strong>Name:</strong> ${name}<br><strong>Price:</strong> ${price}</li>`;
             }
         } catch (Error) {
-            console.error(Error);
+            console.log(Error);
         }
     });
     const list = document.getElementById("root");
