@@ -29,22 +29,25 @@ const books = [
 ];
 
 function renderBooks(arr) {
-    try {
-        const elements = arr.map((item, index) => {
-            const {author, name, price} = item;
+    const elements = arr.map((item, index) => {
+        const {author, name, price} = item;
+        try {
             if (!author) {
-                return console.log(`Error: no author in book: #${index + 1}`);
+                throw new Error(`Error: no author in book: #${index + 1}`);
             } else if (!name) {
-                return console.log(`Error: no name in book: #${index + 1}`);
+                throw new Error(`Error: no name in book: #${index + 1}`);
             } else if (!price) {
-                return console.log(`Error: no price in book: #${index + 1}`);
+                throw new Error(`Error: no name in book: #${index + 1}`);
+            } else {
+                return `<li>BOOK #${index + 1}<br><strong>Author:</strong> ${author}<br><strong>Name:</strong> ${name}<br><strong>Price:</strong> ${price}</li>`;
             }
-            return `<li>BOOK #${index + 1}<br><strong>Author:</strong> ${author}<br><strong>Name:</strong> ${name}<br><strong>Price:</strong> ${price}</li>`;
-        });
-        const list = document.getElementById("root");
-        list.innerHTML = `<ul>${elements.join(" ")}</ul>`;
-    } catch (e) {
-        console.log(e);
-    }
+        } catch (Error) {
+            console.error(Error);
+        }
+    });
+    const list = document.getElementById("root");
+    list.innerHTML = `<ul>${elements.join(" ")}</ul>`;
 }
+
 renderBooks(books);
+
