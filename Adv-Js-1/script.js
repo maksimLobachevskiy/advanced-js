@@ -58,16 +58,20 @@ const characters = [
     }
 ];
 
-let charactersShortInfo = [];
+let charactersShortInfo = characters.map(({name, lastName, age}) => {
+    return {name, lastName, age};
+});
 
-function newChar() {
-    characters.forEach(({name, lastName, age}) => {
-        charactersShortInfo.push({name, lastName, age});
-    });
-    return charactersShortInfo;
-}
 
-console.log(newChar());
+//
+// function newChar() {
+//     characters.forEach(({name, lastName, age}) => {
+//         charactersShortInfo.push({name, lastName, age});
+//     });
+//     return charactersShortInfo;
+// }
+
+console.log(charactersShortInfo);
 
 //TASK3////////////////////////////
 const user1 = {
