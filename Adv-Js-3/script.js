@@ -8,26 +8,51 @@ class Employee {
     get salaryInfo() {
         return this.salary;
     }
-    set salaryInfo(newSalary) {
-        this.salary = newSalary;
+
+    set salaryInfo(salary) {
+        this.salary = salary;
+    }
+
+    get ageInfo() {
+        return this.age;
+    }
+    set ageInfo(age) {
+        this.age = age;
+    }
+
+    get nameInfo() {
+        return this.name;
+    }
+    set nameInfo(age) {
+        this.name = name;
     }
 }
 
 const employee = new Employee("Edward", 45, 2500);
 
-class Programmer extends Employee {
-    constructor(name, age, salary) {
-        super(name, age, salary);
+console.log(employee);
 
+class Programmer extends Employee {
+    constructor(name, age, salary, lang) {
+        super(name, age, salary);
+        this.lang = lang;
     }
     get salaryInfo() {
         return this.salary * 3;
     }
-    set salaryInfo(newSalary) {
-        this.salary = newSalary;
+
+    get langInfo() {
+        return this.lang;
     }
+
+    set langInfo(lang) {
+        this.lang = lang;
+    }
+
 }
 
-const programmer = new Programmer("Paul", 34, 1500);
+const phpDeveloper = new Programmer("Paul", 34, 1500, ["English", "Russian"]);
+const javaDeveloper = new Programmer("Edward", 30, 3000, ["English", "German"]);
 
-console.log(programmer, programmer.newSalary);
+console.log(phpDeveloper, phpDeveloper.salaryInfo);
+console.log(javaDeveloper, javaDeveloper.salaryInfo, javaDeveloper.langInfo);
