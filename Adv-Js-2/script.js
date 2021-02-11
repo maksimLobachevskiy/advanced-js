@@ -29,24 +29,30 @@ const books = [
 ];
 
 function renderBooks(arr) {
-    const elements = arr.map((item, index) => {
-        const {author, name, price} = item;
+    const list = document.getElementById("root");
+    const listContainer = document.createElement('ul');
+    function makeElem(arrItem, arrIndex) {
+        const {author, name, price} = arrItem;
+        let li = document.createElement('li');
+        if (!author) {
+            throw new Error(`no author in book: #${arrIndex + 1}`);
+        } else if (!name) {
+            throw new Error(`no name in book: #${arrIndex + 1}`);
+        } else if (!price) {
+            throw new Error(`no price in book: #${arrIndex + 1}`);
+        }
+        li.innerHTML = `<strong>Author:</strong> ${author}<br><strong>Name:</strong> ${name}<br><strong>Price:</strong> ${price}`;
+        return li;
+    }
+    arr.map((item, index) => {
         try {
-            if (!author) {
-                throw new Error(`no author in book: #${index + 1}`);
-            } else if (!name) {
-                throw new Error(`no name in book: #${index + 1}`);
-            } else if (!price) {
-                throw new Error(`no price in book: #${index + 1}`);
-            } else {
-                return `<li>BOOK #${index + 1}<br><strong>Author:</strong> ${author}<br><strong>Name:</strong> ${name}<br><strong>Price:</strong> ${price}</li>`;
-            }
+            const listElement = makeElem(item, index);
+            listContainer.append(listElement);
         } catch (Error) {
             console.log(Error);
         }
     });
-    const list = document.getElementById("root");
-    list.innerHTML = `<ul>${elements.join(" ")}</ul>`;
+    return list.append(listContainer);
 }
 
 renderBooks(books);
