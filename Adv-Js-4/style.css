@@ -4,6 +4,7 @@
     list-style: none;
     column-count: 3;
 }
+
 .lds-roller {
     display: inline-block;
     position: relative;

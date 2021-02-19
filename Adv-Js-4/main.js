@@ -1,12 +1,18 @@
 function fetchFilms(url) {
     fetch(url).then((res) => {
-        return res.json();
+        if (res.ok) {
+            return res.json();
+        } else {
+            throw new Error('Something went wrong');
+        }
     }).then((data) => {
         const characters = getActors(data);
         displayData(data);
         const loadChars = document.querySelectorAll(".chars");
         characters.forEach(displayCharacters(loadChars));
-    })
+    }).catch((error) => {
+        console.log(error)
+    });
 
     function getActors({results}) {
         return results.map(({characters}) => {
@@ -27,7 +33,7 @@ function displayData(data) {
 
 function displayCharacters(loadChars) {
     return function (charList, filmId) {
-        loadChars[filmId].innerHTML = "<div class=\"lds-roller\"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>";
+        loadChars[filmId].innerHTML = `<div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>`;
         const fetchChars = charList.map(charURL => {
             return fetch(charURL).then((res) => {
                 return res.json();
